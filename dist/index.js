@@ -5,10 +5,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
     result["default"] = mod;
     return result;
-}
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
-}
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const connectorCore = __importStar(require("loopback-connector"));
 const sap_dao_1 = require("./sap-dao");
@@ -48,15 +48,18 @@ class SapConnector extends Connector {
     }
     find(modelName, filter, options) {
         let queryParams = JSON.stringify(filter);
-        return axios_1.default.get(`${this.host}:${this.port}/sap/${modelName}?filter=${queryParams}`);
+        let port = (this.port ? `:${this.port}` : '');
+        return axios_1.default.get(`${this.host}${port}/svc-hr/${modelName}?filter=${queryParams}`);
     }
     findById(modelName, id, filter, options) {
         let queryParams = JSON.stringify(filter);
-        return axios_1.default.get(`${this.host}:${this.port}/sap/${modelName}/${id}?filter=${queryParams}`);
+        let port = (this.port ? `:${this.port}` : '');
+        return axios_1.default.get(`${this.host}${port}/svc-hr/${modelName}/${id}?filter=${queryParams}`);
     }
     findOne(modelName, filter, options) {
         let queryParams = JSON.stringify(filter);
-        return axios_1.default.get(`${this.host}:${this.port}/sap/${modelName}/findOne?filter=${queryParams}`);
+        let port = (this.port ? `:${this.port}` : '');
+        return axios_1.default.get(`${this.host}${port}/svc-hr/${modelName}/findOne?filter=${queryParams}`);
     }
 }
 exports.SapConnector = SapConnector;
