@@ -49,17 +49,23 @@ export class SapConnector extends Connector {
 
 	find(modelName, filter, options?) {
 		let queryParams = JSON.stringify(filter)
-		return Axios.get(`${this.host}:${this.port}/sap/${modelName}?filter=${queryParams}`)
+		let port = (this.port ? `:${this.port}` : '')
+			
+		return Axios.get(`${this.host}${port}/svc-hr/${modelName}?filter=${queryParams}`)
 	}
 
 	findById(modelName, id, filter, options?) {
 		let queryParams = JSON.stringify(filter)
-		return Axios.get(`${this.host}:${this.port}/sap/${modelName}/${id}?filter=${queryParams}`)
+		let port = (this.port ? `:${this.port}` : '')
+
+		return Axios.get(`${this.host}${port}/svc-hr/${modelName}/${id}?filter=${queryParams}`)
 	}
 
 	findOne(modelName, filter, options?) {
 		let queryParams = JSON.stringify(filter)
-		return Axios.get(`${this.host}:${this.port}/sap/${modelName}/findOne?filter=${queryParams}`)
+		let port = (this.port ? `:${this.port}` : '')
+		
+		return Axios.get(`${this.host}${port}/svc-hr/${modelName}/findOne?filter=${queryParams}`)
 	}
 
 }
