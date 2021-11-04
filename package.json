@@ -1,0 +1,19 @@
+{
+  "name": "loopback-typescript-sap-connector",
+  "version": "1.0.5",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prelib:publish": "tsc && npm --no-git-tag-version version patch",
+    "lib:publish": "npm publish --registry http://verdaccio.pln.co.id"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "loopback-connector": "^4.5.1",
+    "rxjs": "^6.3.3"
+  }
+}
